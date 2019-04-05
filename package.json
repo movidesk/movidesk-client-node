@@ -11,6 +11,7 @@
     "typescript": "^3.4.1"
   },
   "scripts": {
+    "dev": "sucrase ./src -d ./dist --transforms typescript,imports",
     "build": "tsc"
   }
 }
