@@ -22,4 +22,40 @@ export default class PersonClient {
 
     return response;
   }
+
+  getById(id: number | string): Promise<Person> {
+    const response = api
+      .get(this._prefix, {
+        params: {
+          id,
+          token: this._token
+        }
+      })
+      .then(res => res.data);
+
+    return response;
+  }
+
+  post(person: Person): Promise<Person> {
+    const response = api
+      .post(this._prefix, person, {
+        params: {
+          token: this._token
+        }
+      })
+      .then(res => res.data);
+
+    return response;
+  }
+
+  patch(id: number | string, person: Person): void {
+    api
+      .patch(this._prefix, person, {
+        params: {
+          id,
+          token: this._token
+        }
+      })
+      .then(res => res.data);
+  }
 }
